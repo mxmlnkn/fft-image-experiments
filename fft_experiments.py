@@ -88,7 +88,7 @@ if __name__ == "__main__":
         order = int(log(size / scale) / log(sqrt(7)))
 
         img = gosper_diagram(size, order, scale=scale)
-        toimage(img, save="gosper-diagram-{}.png".format(size))
+        toimage(img, save="gosper-diagram-{}.png".format(N))
 
         fimg = np.log(np.abs(fft2(img)) + 1e-100)
-        toimage(fftshift(fimg), save="fft-gosper-diagram-{}.png".format(size))
+        toimage(fftshift(fimg), save="fft-gosper-diagram-{}.png".format(N))
