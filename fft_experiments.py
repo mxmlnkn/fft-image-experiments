@@ -31,8 +31,8 @@ def toimage(fimg, gamma=1.9, percent=0.95, extend = 1.1, save=None):
     mid = (low+high)/2
     low = mid + (low-mid)*extend
     high = mid + (high-mid)*extend
-    
-    image = Image.fromarray((clip((fimg-low)/(high-low),0,1)**gamma*255).astype(np.uint8), "P")
+
+    image = Image.fromarray((clip((fimg-low)/(high-low),0,1)**gamma*255).astype(np.uint8), "L")
     if save is not None:
         image.save(save)
         print("Saving image file: {}".format(save))
