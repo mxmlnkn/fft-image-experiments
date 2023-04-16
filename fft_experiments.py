@@ -22,7 +22,7 @@ def value_diapason(x, percent=0.95, nbins=100):
     return low, high
 
 
-def toimage(fimg, gamma=1.9, percent=0.95, extend=1.1, save=None):
+def toimage(fimg, gamma=1.9, percent=0.95, extend=1.1, save=None, targetSize=2048):
     """Show binary matrix as monochrome image, automatically detecting upper and lower brightness bounds"""
     low, high = value_diapason(fimg, percent=percent)
 
@@ -31,15 +31,18 @@ def toimage(fimg, gamma=1.9, percent=0.95, extend=1.1, save=None):
     high = mid + (high - mid) * extend
 
     image = Image.fromarray((clip((fimg - low) / (high - low), 0, 1) ** gamma * 255).astype(np.uint8), "L")
+    if image.size[0] < targetSize:
+        image = image.resize((targetSize, targetSize), resample=Image.NEAREST)
+    if image.size[0] > targetSize:
+        image = image.resize((targetSize, targetSize), resample=Image.LANCZOS)
     if save is not None:
-        image.save(save)
         print("Saving image file: {}".format(save))
+        image.save(save)
     return image
 
 
 if __name__ == "__main__":
-    N = 10
-
+  for N in range(1, 14):
     # Hilbert curves
     print("Hilbert curve experiment")
     if True:
