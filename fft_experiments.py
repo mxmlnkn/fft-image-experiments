@@ -54,13 +54,13 @@ if __name__ == "__main__":
         toimage(img, gamma=1.0, save="hilbert-pattern-order_{}.png".format(N))
 
         fimg = np.log(np.abs(fft2(img)) + 1e-100)
-        toimage(-fimg, gamma=1, percent=0.7, extend=1.5, save="fft-inverted-hilbert-pattern-order_{}".format(N))
+        toimage(-fimg, gamma=1, percent=0.7, extend=1.5, save="fft-inverted-hilbert-pattern-order_{}.png".format(N))
 
         img = hilbert_binary_diagram(N)
         toimage(img, gamma=1.0, save="hilbert-curve-order_{}.png".format(N))
 
         fimg = np.log(np.abs(fft2(img)) + 1e-100)
-        toimage(-fimg, gamma=1, percent=0.7, extend=1.5, save="fft-inverted-hilbert-curve-order_{}".format(N))
+        toimage(-fimg, gamma=1, percent=0.7, extend=1.5, save="fft-inverted-hilbert-curve-order_{}.png".format(N))
 
     # Dragon curve
     print("Dragon curve experiment")
@@ -69,10 +69,10 @@ if __name__ == "__main__":
 
         D = dragon_binary_diagram(N)  # toimage(D).show()
 
-        toimage(D, save="dragon_diagram_{}.png".format(N))
+        toimage(D, save="dragon-diagram-{}.png".format(N))
 
         fimg = np.log(np.abs(fft2(D)) + 1e-100)
-        toimage(fftshift(fimg), save="fft_dragon_diagram_{}.png".format(N))
+        toimage(fftshift(fimg), save="fft-dragon-diagram-{}.png".format(N))
 
     # gosper curve
     print("Gosper curve experiment")
@@ -85,7 +85,7 @@ if __name__ == "__main__":
         order = int(log(size / scale) / log(sqrt(7)))
 
         img = gosper_diagram(size, order, scale=scale)
-        toimage(img, save="gosper_diagram_{}.png".format(size))
+        toimage(img, save="gosper-diagram-{}.png".format(size))
 
         fimg = np.log(np.abs(fft2(img)) + 1e-100)
-        toimage(fftshift(fimg), save="fft_gosper_diagram_{}.png".format(size))
+        toimage(fftshift(fimg), save="fft-gosper-diagram-{}.png".format(size))
