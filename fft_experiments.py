@@ -11,8 +11,8 @@ def value_diapason(x, percent=0.95, nbins=100):
     accum = 0
     low = bins[-1]
     high = bins[0]
-    #enumerate histogram bins starting from the most populated. 
-    for i, cnt in sorted(enumerate(counts), 
+    #enumerate histogram bins starting from the most populated.
+    for i, cnt in sorted(enumerate(counts),
                           key = (lambda i_c: i_c[1]),
                           reverse=True):
         accum += cnt
@@ -21,7 +21,7 @@ def value_diapason(x, percent=0.95, nbins=100):
         if accum > percent * total:
             break
     return low, high
-    
+
 
 def toimage(fimg, gamma=1.9, percent=0.95, extend = 1.1, save=None):
     """Show binary matrix as monochrome image, automatically detecting upper and lower brightness bounds
@@ -50,7 +50,7 @@ if __name__=="__main__":
 
         #The patter that will be put along the image
         pattern = np.array([1,1,-1,-1])
-        
+
         H = hilbert_indices(N)
         #Fill hilbert curve with repeating pattern
         img = pattern[(H%len(pattern))]
@@ -77,12 +77,12 @@ if __name__=="__main__":
         D = dragon_binary_diagram(N)#toimage(D).show()
 
         toimage(D, save="dragon_diagram_{}.png".format(N))
-        
+
         fimg = np.log(np.abs(fft2(D))+1e-100)
         toimage(fftshift(fimg),
                 save="dragon_diagram_{}_fft.png".format(N)
         )
-        
+
     #gosper curve
     print("Gosper curve experiment")
     if True:
@@ -91,10 +91,10 @@ if __name__=="__main__":
         scale = 4
         #calculate the order using the fact that curve increases by sqrt(7) times
         order = int(log(size/scale)/log(sqrt(7)))
-                
+
         img = gosper_diagram( size, order, scale=scale )
         toimage(img, save="gosper_diagram_{}.png".format(size))
-        
+
         fimg = np.log(np.abs(fft2(img))+1e-100)
         toimage(fftshift(fimg),
                 save="gosper_diagram_{}_fft.png".format(size))
