@@ -54,16 +54,16 @@ if __name__ == "__main__":
         H = hilbert_indices(N)
         # Fill hilbert curve with repeating pattern
         img = pattern[(H % len(pattern))]
-        toimage(img, gamma=1.0, save="hilbert-pattern-order_{}.png".format(N))
+        toimage(img, gamma=1.0, save="hilbert-pattern-order-{}.png".format(N))
 
         fimg = np.log(np.abs(fft2(img)) + 1e-100)
-        toimage(-fimg, gamma=1, percent=0.7, extend=1.5, save="fft-inverted-hilbert-pattern-order_{}.png".format(N))
+        toimage(-fimg, gamma=1, percent=0.7, extend=1.5, save="fft-inverted-hilbert-pattern-order-{}.png".format(N))
 
         img = hilbert_binary_diagram(N)
-        toimage(img, gamma=1.0, save="hilbert-curve-order_{}.png".format(N))
+        toimage(img, gamma=1.0, save="hilbert-curve-order-{}.png".format(N))
 
         fimg = np.log(np.abs(fft2(img)) + 1e-100)
-        toimage(-fimg, gamma=1, percent=0.7, extend=1.5, save="fft-inverted-hilbert-curve-order_{}.png".format(N))
+        toimage(-fimg, gamma=1, percent=0.7, extend=1.5, save="fft-inverted-hilbert-curve-order-{}.png".format(N))
 
     # Dragon curve
     print("Dragon curve experiment")
