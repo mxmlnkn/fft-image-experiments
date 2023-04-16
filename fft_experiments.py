@@ -55,20 +55,20 @@ if __name__=="__main__":
         #Fill hilbert curve with repeating pattern
         img = pattern[(H%len(pattern))]
         toimage(img, gamma = 1.0,
-                save = "hilbert-pattern-order{}.png".format(N))
+                save = "hilbert-pattern-order_{}.png".format(N))
 
         fimg = np.log(np.abs(fft2(img))+1e-100)
         toimage(-fimg, gamma = 1, percent=0.7, extend = 1.5,
-                save = "hilbert-pattern-order{}-fft-inverted.png".format(N))
+                save = "fft-inverted-hilbert-pattern-order_{}".format(N))
 
 
         img = hilbert_binary_diagram(N)
         toimage(img, gamma = 1.0,
-                save = "hilbert-curve-order{}.png".format(N))
+                save = "hilbert-curve-order_{}.png".format(N))
 
         fimg = np.log(np.abs(fft2(img))+1e-100)
         toimage(-fimg, gamma = 1, percent=0.7, extend = 1.5,
-                save =  "hilbert-curve-order{}-fft-inverted.png".format(N))
+                save =  "fft-inverted-hilbert-curve-order_{}".format(N))
 
     #Dragon curve
     print("Dragon curve experiment")
@@ -80,7 +80,7 @@ if __name__=="__main__":
 
         fimg = np.log(np.abs(fft2(D))+1e-100)
         toimage(fftshift(fimg),
-                save="dragon_diagram_{}_fft.png".format(N)
+                save="fft_dragon_diagram_{}.png".format(N)
         )
 
     #gosper curve
@@ -97,4 +97,4 @@ if __name__=="__main__":
 
         fimg = np.log(np.abs(fft2(img))+1e-100)
         toimage(fftshift(fimg),
-                save="gosper_diagram_{}_fft.png".format(size))
+                save="fft_gosper_diagram_{}.png".format(size))
