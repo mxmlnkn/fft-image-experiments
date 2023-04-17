@@ -38,6 +38,8 @@ to execute them.
 
 ![](media/fft-inverted-hilbert-pattern-order-13-p-norms.png)
 
+![](media/fft-inverted-hilbert-pattern-order-13-calculate-p.png)
+
 
 # Scaling the recursion depth
 
