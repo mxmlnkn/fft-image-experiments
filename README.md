@@ -34,6 +34,10 @@ $ make test
 ````
 to execute them.
 
+# Analyzing the shape appearing in the Fourier transform of the Hilbert curve
+
+![](media/fft-inverted-hilbert-pattern-order-13-p-norms.png)
+
 
 # Scaling the recursion depth
 
